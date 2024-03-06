@@ -1,0 +1,10 @@
+{
+	"cSpell.words": ["ilike", "Nuxt", "TRPC"],
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"tailwindCSS.experimental.classRegex": ["tw`(.*?)`", "tw\\('(.*?)'\\)"],
+	"editor.quickSuggestions": {
+		"strings": true
+	}
+}

@@ -1,0 +1,44 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "types": "tsc --noEmit --pretty",
+    "drizzle-gen": "dotenv drizzle-kit generate:pg",
+    "drizzle-push": "dotenv drizzle-kit push:pg",
+    "drizzle-studio": "concurrently \"pnpm open-studio\" \"dotenv drizzle-kit studio\"",
+    "open-studio": "open-cli https://local.drizzle.studio"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.8.1",
+    "@t3-oss/env-nuxt": "^0.9.2",
+    "@trpc/client": "^10.45.1",
+    "@trpc/server": "^10.45.1",
+    "drizzle-orm": "^0.29.4",
+    "nuxt": "^3.10.3",
+    "tailwind-merge": "^2.2.1",
+    "trpc-nuxt": "^0.10.19",
+    "uuid": "^9.0.1",
+    "vue": "^3.4.19",
+    "vue-router": "^4.3.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@nuxtjs/color-mode": "^3.3.2",
+    "@nuxtjs/tailwindcss": "^6.11.4",
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/uuid": "^9.0.8",
+    "concurrently": "^8.2.2",
+    "daisyui": "^4.7.2",
+    "dotenv-cli": "^7.3.0",
+    "drizzle-kit": "^0.20.14",
+    "open-cli": "^8.0.0",
+    "pg": "^8.11.3",
+    "typescript": "^5.3.3"
+  }
+}
