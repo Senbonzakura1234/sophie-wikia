@@ -1,6 +1,6 @@
 import { appEnv } from "~/server/utils/env.mjs";
 import type { CommonObject, KeyOf, ValueOf } from "~/types/common";
-import type { SearchQuery } from "~/types/common/zod";
+import { searchQueryValidator, type SearchQuery } from "~/types/common/zod";
 
 import type { APIError, AlertTypeEnum } from "~/types/common";
 import type { AtelierIcon } from "~/types/common/icon";
@@ -12,6 +12,7 @@ import type {
 	RumorTypeEnum,
 	SortByEnum,
 } from "~/types/common/zod";
+import type { LocationQuery, RouteParams } from "vue-router";
 
 // =======================================					Constant						=======================================
 
@@ -203,6 +204,28 @@ export function evnIs(nodeEnv: typeof appEnv.NUXT_PUBLIC_NODE_ENV) {
 
 export function convertCode<TInput extends string>(input?: TInput | null) {
 	return input ? input.toLowerCase().replaceAll("_", " ") : "";
+}
+
+export function paramsToQuery(input: LocationQuery) {
+	return searchQueryValidator.keyof()._def.values.reduce((prev, cur) => {
+		const rawValue = input[cur];
+		const query = Array.isArray(rawValue) ? rawValue[0] : rawValue;
+		const value = cur === "page" ? parseInt(query || "") : query;
+		return { ...prev, [cur]: value || null };
+	}, {}) as SearchQuery;
+}
+
+export function queryToParams(input: SearchQuery) {
+	const queryEntries = entries(input).filter(([, value]) => Boolean(value));
+
+	console.log({ queryEntries });
+
+	if (!queryEntries.length) return {} as Partial<SearchQuery>;
+
+	return queryEntries.reduce((prev, [key, value]) => ({
+		...prev,
+		[key]: value,
+	}), {}) as Partial<SearchQuery>;
 }
 
 export function getBaseUrl(useMainHost?: boolean) {

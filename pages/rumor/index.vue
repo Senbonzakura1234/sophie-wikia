@@ -6,7 +6,7 @@ const searchQuery = useSearchQuery();
 	<NuxtLayout :name="'content'">
 		<li
 			class="text-primary"
-			v-for="item in searchQuery.data.pages.effect || []"
+			v-for="item in searchQuery.data.pages.rumor || []"
 		>
 			{{ item.name }}
 		</li>
