@@ -1,3 +1,4 @@
 <template>
-	<NuxtWelcome />
+	<NuxtLayout :name="'root'">
+	</NuxtLayout>
 </template>

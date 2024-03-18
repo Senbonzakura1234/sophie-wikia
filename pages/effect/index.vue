@@ -4,11 +4,19 @@ const searchQuery = useSearchQuery();
 
 <template>
 	<NuxtLayout :name="'content'">
-		<li
-			class="text-primary"
+		<div
+			class="text-primary card"
 			v-for="item in searchQuery.data.pages.effect || []"
 		>
-			{{ item.name }}
-		</li>
+			<div class="card-title">
+				{{ item.name }}
+			</div>
+			<div class="card-body">
+				<p><span class="font-bold">Level:</span> {{ item.index }}</p>
+				<p>
+					{{ item.description }}
+				</p>
+			</div>
+		</div>
 	</NuxtLayout>
 </template>

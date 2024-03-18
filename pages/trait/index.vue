@@ -4,11 +4,26 @@ const searchQuery = useSearchQuery();
 
 <template>
 	<NuxtLayout :name="'content'">
-		<li
-			class="text-primary"
+		<div
+			class="text-primary card"
 			v-for="item in searchQuery.data.pages.trait || []"
 		>
-			{{ item.name }}
-		</li>
+			<div class="card-title">
+				{{ item.name }}
+			</div>
+			<div class="card-body">
+				<p>
+					<span class="font-bold">Description:</span>
+					{{ item.description }}
+				</p>
+				<p>
+					<span class="font-bold">Categories:</span>
+					{{ item.categories.join(", ") }}
+				</p>
+				<p>
+					{{ JSON.stringify(item.mergeFrom) }}
+				</p>
+			</div>
+		</div>
 	</NuxtLayout>
 </template>
