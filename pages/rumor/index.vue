@@ -17,9 +17,10 @@ const searchQuery = useSearchQuery();
 				<p>
 					<span class="font-bold">Rumor Type:</span> {{ item.rumorType }}
 				</p>
-				<p>
-					{{ JSON.stringify(item.description) }}
-				</p>
+
+				<div className="mockup-code">
+					<pre><code>{{ JSON.stringify(item.description, undefined, 2) }}</code></pre>
+				</div>
 			</div>
 		</div>
 	</NuxtLayout>

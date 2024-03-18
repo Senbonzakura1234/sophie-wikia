@@ -20,9 +20,14 @@ const searchQuery = useSearchQuery();
 					<span class="font-bold">Categories:</span>
 					{{ item.categories.join(", ") }}
 				</p>
-				<p>
-					{{ JSON.stringify(item.mergeFrom) }}
-				</p>
+
+				<div className="mockup-code">
+					<pre><code>{{ JSON.stringify(item.mergeFrom, undefined, 2) }}</code></pre>
+				</div>
+
+				<div className="mockup-code">
+					<pre><code>{{ JSON.stringify(item.itemPresent || {}, undefined, 2) }}</code></pre>
+				</div>
 			</div>
 		</div>
 	</NuxtLayout>
